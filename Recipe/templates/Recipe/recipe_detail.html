@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ recipe.title }} {% endblock %} {% block content %}
+
+<header>
+
+    <section>
+        <div class="" style="max-height:600px;">
+            <img src="{{recipe.image.url}}" style="width: 100%">
+        </div>
+    </section>
+
+</header>
+
+<main>
+    <div class="container-fluid mt-5 mt-md-0 mb-5">
+        <!-- Grid row -->
+        <div class="row" style="margin-top: -100px;">
+            <!-- Grid column -->
+            <div class="col-md-12 px-lg-5">
+                <!-- Card -->
+                <div class="card pb-5 mx-md-3">
+
+                    <div class="card-body">
+                        <div class="container">
+                            <!-- Section heading -->
+                            <h1 class="text-center h1 pt-4 mb-3">
+                                <strong>{{recipe.title}}</strong>
+                            </h1>
+
+                            <div class="row">
+                                <div class="col-md-12 col-xl-12 d-flex justify-content-center">
+                                    <div class="d-inline">
+                                        <label for="calories">Prep:</label>
+                                        <span id="calories" class="border rectangle">{{recipe.prep_time}} mins</span>
+                                    </div>
+                                    <div class="d-inline">
+                                        <label for="carbs" class="mx-2">Servings:</label>
+                                        <span id="carbs" class="border rectangle">{{recipe.cook_time}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Grid row -->
+                            <div class="row row pt-lg-5 pt-3">
+                                <!-- Grid column -->
+                                <div class="col-md-12 col-xl-12">
+                                    <!-- Grid row -->
+                                    <!---------------------------------------------------------------------------------------------------->
+                                    <p> {{recipe.intro|safe}}</p>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+                                            <div class="jumbotron" style="background-color: #f5f5f0">
+                                                <h1>Ingredients:</h1>
+                                                <div> {% for ing in recipe.ingredients.all%}
+                                                    <ul>{{ing.quantity|safe}} - {{ing.name|safe}}</ul>
+                                                    {%endfor%}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
+                                            <div class="jumbotron" style="background-color: #f5f5f0">
+                                                <h1>Directions:</h1>
+                                                <p> {{recipe.directions|safe}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!---------------------------------------------------------------------------------------------------->
+                                    <!-- Grid row -->
+
+                                    <hr class="mt-5">
+                                    <!-- Section: Leave a reply (Not Logged In User) -->
+                                </div>
+                                <!-- Grid column -->
+                            </div>
+                            <!-- Grid row -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% load static %} {% block title %}Food Recipe{% endblock %} {% block content %}
+
+<main class="pt-2">
+    <div class="container">
+        <div class="row">
+            <div class="album py-5">
+                <div class="pb-3">
+                    <h1 class="h3">Popular</h1>
+                </div>
+                <div class="jumbotron">
+                    <div class="container mt-5">
+                        <!--Section: Content-->
+                        <section class="">
+                            <!-- Grid row -->
+                            <div class="row">
+
+
+
+
+                                {% for recipe in recipe_list %}
+                                <!-- Grid column -->
+                                <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                                    <!-- Card -->
+                                    <div class="card hoverable">
+                                        <!-- Card image -->
+                                        <img class="card-img-top" src="{{recipe.image.url}}" alt="Card image cap">
+                                        <!-- Card content -->
+                                        <div class="card-body">
+                                            <!-- Title -->
+                                            <div class="card-body px-0">
+                                                <h3 class="card-text">
+                                                    <a class="text-dark text-decoration-none" href="{{ recipe.get_absolute_url }}">{{ recipe.title|safe|slice:":100" }}</a>
+                                                </h3>
+                                             </div>
+                                       
+                                        </div>
+                                    </div>
+                                    <!-- Card -->
+                                </div>
+                                {% endfor %}
+
+
+
+
+
+
+
+                            </div>
+                            <!-- Grid row -->
+
+
+                            <!--##############################Pagination################################-->
+
+
+
+                            <div class="text-center mt-5">
+                                <a href="#">Back Home</a>
+                            </div>
+                        </section>
+                        <!--Section: Content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
